@@ -8,12 +8,12 @@
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
     :root {
-      --bg: #e0f8d0;
-      --screen: #9bbc0f;
-      --screen-dark: #306230;
-      --screen-darker: #0f380f;
-      --border: #8bac0f;
-      --accent: #306230;
+      --bg: #f0e6ff;
+      --screen: #f8f0ff;
+      --text: #3d2b5c;
+      --accent: #ff7eb3;
+      --border: #d4c4e8;
+      --shadow: #c0a8e0;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,97 +21,125 @@
     body {
       font-family: 'Press Start 2P', monospace;
       background: var(--bg);
-      color: var(--screen-darker);
+      color: var(--text);
       line-height: 1.8;
-      image-rendering: pixelated;
-    }
-
-    .gb-shell {
-      max-width: 740px;
-      margin: 20px auto;
-      background: #8bac0f;
-      border-radius: 24px 24px 32px 32px;
-      padding: 20px;
-      box-shadow: inset 0 -6px 0 #6b8c0a, 0 8px 0 rgba(0,0,0,0.15);
-    }
-
-    .screen {
-      background: var(--screen);
-      border: 6px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 20px;
-      box-shadow: inset 0 0 0 2px #7a9a0c;
+      overflow-x: hidden;
     }
 
     .container {
       max-width: 640px;
       margin: 0 auto;
+      padding: 0 16px;
     }
 
-    .header-row {
+    nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 4px 16px;
-      border-bottom: 2px solid var(--screen-dark);
+      padding: 24px 0 16px;
+      border-bottom: 3px solid var(--border);
     }
     .logo {
-      font-size: 12px;
-      color: var(--screen-darker);
+      font-size: 10px;
       letter-spacing: 2px;
+      animation: bob 2s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
     }
     .nav-links {
       display: flex;
-      gap: 6px;
+      gap: 4px;
+      flex-wrap: wrap;
     }
     .nav-links a {
-      font-size: 7px;
-      color: var(--screen-dark);
+      font-size: 6px;
+      color: var(--text);
       text-decoration: none;
-      padding: 4px 6px;
-      border: 1px solid var(--screen-dark);
+      padding: 6px 8px;
+      background: var(--screen);
+      border: 2px solid var(--border);
+      transition: all 0.15s;
     }
     .nav-links a:hover {
-      background: var(--screen-dark);
-      color: var(--screen);
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+      transform: scale(1.05);
     }
 
     .hero {
-      padding: 40px 4px 32px;
       text-align: center;
+      padding: 48px 0 32px;
+      position: relative;
+    }
+    .sprite {
+      font-size: 64px;
+      display: block;
+      margin-bottom: 12px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
     .hero h1 {
-      font-size: 18px;
-      line-height: 1.6;
-      color: var(--screen-darker);
-      text-transform: uppercase;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--text);
     }
-    .hero h1 span {
-      color: var(--screen-dark);
-      display: inline-block;
-      animation: blink 1s step-end infinite;
+    .hero h1 .name {
+      color: var(--accent);
+      animation: glitch 2s infinite;
     }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
+    @keyframes glitch {
+      0%, 90%, 100% { transform: none; }
+      91% { transform: translateX(-2px) skewX(-5deg); }
+      93% { transform: translateX(2px) skewX(5deg); }
+      95% { transform: translateX(-1px); }
     }
     .hero .tagline {
       margin-top: 16px;
       font-size: 7px;
-      color: var(--screen-dark);
-      line-height: 1.8;
+      color: var(--shadow);
+      line-height: 2;
+    }
+
+    .sparkle-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin: 8px 0;
+      font-size: 10px;
+    }
+    .sparkle-row span {
+      animation: sparkle 1.5s ease-in-out infinite;
+    }
+    .sparkle-row span:nth-child(2) { animation-delay: 0.3s; }
+    .sparkle-row span:nth-child(3) { animation-delay: 0.6s; }
+    .sparkle-row span:nth-child(4) { animation-delay: 0.9s; }
+    .sparkle-row span:nth-child(5) { animation-delay: 1.2s; }
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
     }
 
     section {
-      padding: 28px 4px;
-      border-top: 2px solid var(--screen-dark);
+      padding: 32px 0;
     }
     section h2 {
-      font-size: 10px;
-      color: var(--screen-darker);
+      font-size: 9px;
+      color: var(--text);
       margin-bottom: 16px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      padding: 6px 12px;
+      background: var(--screen);
+      border: 2px solid var(--border);
+      display: inline-block;
+    }
+    section h2::before {
+      content: '> ';
+      color: var(--accent);
     }
 
     .card-grid {
@@ -121,302 +149,330 @@
     }
     .card {
       background: var(--screen);
-      border: 2px solid var(--screen-dark);
-      padding: 12px;
+      border: 3px solid var(--border);
+      padding: 16px 12px;
       text-align: center;
+      transition: all 0.2s;
+      cursor: pointer;
     }
-    .card .icon { font-size: 20px; margin-bottom: 6px; }
-    .card h3 { font-size: 7px; color: var(--screen-darker); margin-bottom: 6px; }
-    .card p { font-size: 6px; color: var(--screen-dark); line-height: 1.6; }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 0 var(--shadow);
+    }
+    .card .icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 8px;
+      animation: bob 3s ease-in-out infinite;
+    }
+    .card h3 { font-size: 7px; margin-bottom: 8px; }
+    .card p { font-size: 6px; color: var(--shadow); line-height: 1.8; }
+
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px;
+      background: var(--screen);
+      border: 3px solid var(--border);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .item:hover {
+      border-color: var(--accent);
+      transform: translateX(6px);
+    }
+    .item .num {
+      font-size: 7px;
+      color: var(--shadow);
+      width: 20px;
+      text-align: right;
+    }
+    .item .emoji { font-size: 18px; }
+    .item .title { flex: 1; font-size: 7px; }
+    .item .meta { font-size: 6px; color: var(--shadow); }
+    .item .heart {
+      color: var(--accent);
+      font-size: 8px;
+      animation: pulse 1s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+    }
 
     .pixel-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 4px;
+      gap: 6px;
     }
     .pixel-item {
       background: var(--screen);
-      border: 2px solid var(--screen-dark);
+      border: 3px solid var(--border);
       aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 36px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .pixel-item:hover {
+      border-color: var(--accent);
+      transform: scale(1.08) rotate(-4deg);
+    }
+    .pixel-item:nth-child(even):hover {
+      transform: scale(1.08) rotate(4deg);
     }
 
-    .list-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px;
-      border: 2px solid var(--screen-dark);
-      margin-bottom: 4px;
-      font-size: 6px;
-      background: var(--screen);
+    .pixel-item:nth-child(1) { animation: wiggle 2s ease-in-out infinite; }
+    .pixel-item:nth-child(3) { animation: wiggle 2s ease-in-out infinite 0.5s; }
+    .pixel-item:nth-child(5) { animation: wiggle 2s ease-in-out infinite 1s; }
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
     }
-    .list-item .num {
-      color: var(--screen-darker);
-      width: 16px;
-      text-align: right;
-    }
-    .list-item .title { flex: 1; color: var(--screen-darker); }
-    .list-item .meta { color: var(--screen-dark); }
-    .list-item .cursor {
-      width: 6px;
-      height: 6px;
-      background: var(--screen-darker);
-      animation: blink 0.8s step-end infinite;
-    }
-
-    .list-item:first-child .cursor { display: block; }
 
     footer {
-      padding: 24px 4px 8px;
       text-align: center;
+      padding: 32px 0 48px;
       font-size: 6px;
-      color: var(--screen-dark);
+      color: var(--shadow);
+      border-top: 3px solid var(--border);
     }
 
-    .gb-dots {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 12px;
+    .scroll-arrow {
+      text-align: center;
+      font-size: 16px;
+      animation: bounce 1.5s ease-in-out infinite;
+      cursor: pointer;
+      padding: 8px;
     }
-    .gb-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--screen-darker);
-      border-radius: 50%;
-    }
-    .gb-dot.red {
-      background: #c84b31;
-      width: 14px;
-      height: 14px;
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
     }
 
     @media (max-width: 600px) {
-      .gb-shell { margin: 8px; padding: 12px; border-radius: 16px; }
-      .screen { padding: 16px 12px; }
-      .hero h1 { font-size: 14px; }
+      .hero h1 { font-size: 12px; }
       .card-grid { grid-template-columns: 1fr; }
       .pixel-grid { grid-template-columns: repeat(2, 1fr); }
-      .header-row { flex-direction: column; gap: 8px; }
+      .sprite { font-size: 48px; }
+      nav { flex-direction: column; gap: 10px; }
     }
   </style>
 </head>
 <body>
-  <div class="gb-shell">
-    <div class="screen">
-      <div class="container">
-        <div class="header-row">
-          <div class="logo">FEIFAN v1.0</div>
-          <div class="nav-links">
-            <a href="#movies">MOVIES</a>
-            <a href="#music">MUSIC</a>
-            <a href="#games">GAMES</a>
-          </div>
-        </div>
-
-        <header class="hero">
-          <h1>
-            <span>HI!</span><br>
-            I'M FEIFAN
-          </h1>
-          <p class="tagline">
-            A LOVER OF CATS, ROCK RIFFS,<br>
-            AND THE QUIET SPACES IN BETWEEN.
-          </p>
-        </header>
-
-        <section id="about">
-          <h2>> WHO I AM</h2>
-          <div class="card-grid">
-            <div class="card">
-              <div class="icon">🐱</div>
-              <h3>CAT PERSON</h3>
-              <p>CATS ARE LITTLE ANCHORS OF CALM IN A NOISY WORLD.</p>
-            </div>
-            <div class="card">
-              <div class="icon">🎸</div>
-              <h3>ROCK SOUL</h3>
-              <p>LOUD GUITARS, HONEST LYRICS, LATE NIGHTS WITH HEADPHONES.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="movies">
-          <h2>> MOVIES I LIKE</h2>
-          <div class="list-item">
-            <span class="num">01</span>
-            <span class="title">BLADE RUNNER 2049</span>
-            <span class="meta">2017</span>
-            <span class="cursor"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">02</span>
-            <span class="title">ARRIVAL</span>
-            <span class="meta">2016</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">03</span>
-            <span class="title">INTERSTELLAR</span>
-            <span class="meta">2014</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">04</span>
-            <span class="title">THE MATRIX</span>
-            <span class="meta">1999</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">05</span>
-            <span class="title">DUNE</span>
-            <span class="meta">2021</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-        </section>
-
-        <section id="music">
-          <h2>> MUSIC I LIKE</h2>
-          <div class="list-item">
-            <span class="num">01</span>
-            <span class="title">THERE IS A LIGHT...</span>
-            <span class="meta">THE SMITHS</span>
-            <span class="cursor"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">02</span>
-            <span class="title">1979</span>
-            <span class="meta">SMASHING PUMPKINS</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">03</span>
-            <span class="title">REPTILIA</span>
-            <span class="meta">THE STROKES</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">04</span>
-            <span class="title">FLUORESCENT ADOLESCENT</span>
-            <span class="meta">ARCTIC MONKEYS</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">05</span>
-            <span class="title">OBSTACLE 1</span>
-            <span class="meta">INTERPOL</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-        </section>
-
-        <section id="games">
-          <h2>> GAMES I LIKE</h2>
-          <div class="list-item">
-            <span class="num">01</span>
-            <span class="title">OVERCOOKED 2</span>
-            <span class="meta">CHAOS KITCHEN</span>
-            <span class="cursor"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">02</span>
-            <span class="title">STARDEW VALLEY</span>
-            <span class="meta">1-BIT FARMING</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">03</span>
-            <span class="title">HOLLOW KNIGHT</span>
-            <span class="meta">BUG METROIDVANIA</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">04</span>
-            <span class="title">CELESTE</span>
-            <span class="meta">CLIMB THE MOUNTAIN</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-          <div class="list-item">
-            <span class="num">05</span>
-            <span class="title">PORTAL 2</span>
-            <span class="meta">CAKE IS A LIE</span>
-            <span class="cursor" style="display:none"></span>
-          </div>
-        </section>
-
-        <section id="gallery">
-          <h2>> CAT VIBES</h2>
-          <div class="pixel-grid">
-            <div class="pixel-item">🐱</div>
-            <div class="pixel-item">🎀</div>
-            <div class="pixel-item">🐾</div>
-            <div class="pixel-item">☕</div>
-            <div class="pixel-item">🐈</div>
-            <div class="pixel-item">✨</div>
-          </div>
-        </section>
-
-        <footer>
-          <p>MADE WITH ♥ BY FEIFAN</p>
-        </footer>
+  <div class="container">
+    <nav>
+      <div class="logo">☆ FEIFAN ☆</div>
+      <div class="nav-links">
+        <a href="#about">ABOUT</a>
+        <a href="#movies">MOVIES</a>
+        <a href="#music">MUSIC</a>
+        <a href="#games">GAMES</a>
+        <a href="#gallery">CATS</a>
       </div>
-    </div>
-    <div class="gb-dots">
-      <div class="gb-dot red"></div>
-      <div class="gb-dot"></div>
-      <div class="gb-dot"></div>
-    </div>
+    </nav>
+
+    <header class="hero">
+      <div class="sprite">👾</div>
+      <h1>HELLO! I'M <span class="name">FEIFAN</span></h1>
+      <p class="tagline">
+        ☆ CAT LOVER · INDIE KID · CHAOS CHEF ☆<br>
+        WELCOME TO MY LIL CORNER OF THE WEB ♥
+      </p>
+      <div class="sparkle-row">
+        <span>✦</span><span>♥</span><span>✦</span><span>♥</span><span>✦</span>
+      </div>
+    </header>
+
+    <div class="scroll-arrow">▼</div>
+
+    <section id="about">
+      <h2>WHO I AM</h2>
+      <div class="card-grid">
+        <div class="card">
+          <span class="icon">🐱</span>
+          <h3>CAT PERSON</h3>
+          <p>CATS ARE LITTLE ANCHORS OF CALM IN A NOISY WORLD. THEIR QUIET CURIOSITY REMINDS ME TO SLOW DOWN.</p>
+        </div>
+        <div class="card">
+          <span class="icon">🎸</span>
+          <h3>INDIE SOUL</h3>
+          <p>LOUD GUITARS, HONEST LYRICS, LATE NIGHTS WITH HEADPHONES ON. MUSIC IS WHERE I FEEL MOST ALIVE.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="movies">
+      <h2>SCI-FI MOVIES</h2>
+      <div class="item-list">
+        <div class="item">
+          <span class="num">01</span>
+          <span class="emoji">🤖</span>
+          <span class="title">BLADE RUNNER 2049</span>
+          <span class="meta">2017</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">02</span>
+          <span class="emoji">👽</span>
+          <span class="title">ARRIVAL</span>
+          <span class="meta">2016</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">03</span>
+          <span class="emoji">🌌</span>
+          <span class="title">INTERSTELLAR</span>
+          <span class="meta">2014</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">04</span>
+          <span class="emoji">🕶️</span>
+          <span class="title">THE MATRIX</span>
+          <span class="meta">1999</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">05</span>
+          <span class="emoji">🐛</span>
+          <span class="title">DUNE</span>
+          <span class="meta">2021</span>
+          <span class="heart">♥</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="music">
+      <h2>INDIE TUNES</h2>
+      <div class="item-list">
+        <div class="item">
+          <span class="num">01</span>
+          <span class="emoji">🎵</span>
+          <span class="title">THERE IS A LIGHT...</span>
+          <span class="meta">THE SMITHS</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">02</span>
+          <span class="emoji">🎵</span>
+          <span class="title">1979</span>
+          <span class="meta">SMASHING PUMPKINS</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">03</span>
+          <span class="emoji">🎵</span>
+          <span class="title">REPTILIA</span>
+          <span class="meta">THE STROKES</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">04</span>
+          <span class="emoji">🎵</span>
+          <span class="title">FLUORESCENT ADOLESCENT</span>
+          <span class="meta">ARCTIC MONKEYS</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">05</span>
+          <span class="emoji">🎵</span>
+          <span class="title">OBSTACLE 1</span>
+          <span class="meta">INTERPOL</span>
+          <span class="heart">♥</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="games">
+      <h2>GAMES I LOVE</h2>
+      <div class="item-list">
+        <div class="item">
+          <span class="num">01</span>
+          <span class="emoji">🍳</span>
+          <span class="title">OVERCOOKED 2</span>
+          <span class="meta">CHAOS KITCHEN</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">02</span>
+          <span class="emoji">🌻</span>
+          <span class="title">STARDEW VALLEY</span>
+          <span class="meta">1-BIT FARMING</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">03</span>
+          <span class="emoji">🐞</span>
+          <span class="title">HOLLOW KNIGHT</span>
+          <span class="meta">BUG METROIDVANIA</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">04</span>
+          <span class="emoji">⛰️</span>
+          <span class="title">CELESTE</span>
+          <span class="meta">CLIMB THE MOUNTAIN</span>
+          <span class="heart">♥</span>
+        </div>
+        <div class="item">
+          <span class="num">05</span>
+          <span class="emoji">🍰</span>
+          <span class="title">PORTAL 2</span>
+          <span class="meta">CAKE IS A LIE</span>
+          <span class="heart">♥</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>CAT VIBES</h2>
+      <div class="pixel-grid">
+        <div class="pixel-item">🐱</div>
+        <div class="pixel-item">🎀</div>
+        <div class="pixel-item">🐾</div>
+        <div class="pixel-item">☕</div>
+        <div class="pixel-item">🐈</div>
+        <div class="pixel-item">✨</div>
+      </div>
+    </section>
+
+    <footer>
+      <p>☆ MADE WITH LOTS OF ♥ BY FEIFAN ☆</p>
+      <p style="margin-top:8px; font-size:5px;">THANKS FOR VISITING! COME BACK SOON ♥</p>
+    </footer>
   </div>
 
   <script>
-    const lists = document.querySelectorAll('.list-item');
-    let currentList = 0;
-    let currentRow = 0;
-
-    function getLists() {
-      const sections = document.querySelectorAll('section');
-      const result = [];
-      sections.forEach(s => {
-        const items = s.querySelectorAll('.list-item');
-        if (items.length) result.push(items);
+    document.querySelectorAll('.item').forEach(item => {
+      item.addEventListener('click', function() {
+        const heart = this.querySelector('.heart');
+        heart.style.animation = 'none';
+        heart.offsetHeight;
+        heart.style.animation = 'pulse 0.3s ease-in-out 3';
       });
-      return result;
-    }
-
-    function updateCursor() {
-      const lists = getLists();
-      document.querySelectorAll('.cursor').forEach(c => c.style.display = 'none');
-      if (lists[currentList] && lists[currentList][currentRow]) {
-        lists[currentList][currentRow].querySelector('.cursor').style.display = 'block';
-      }
-    }
-
-    document.addEventListener('keydown', (e) => {
-      const lists = getLists();
-      if (!lists.length) return;
-      if (e.key === 'ArrowDown') {
-        currentRow = (currentRow + 1) % lists[currentList].length;
-        updateCursor();
-      } else if (e.key === 'ArrowUp') {
-        currentRow = (currentRow - 1 + lists[currentList].length) % lists[currentList].length;
-        updateCursor();
-      } else if (e.key === 'ArrowLeft') {
-        currentList = (currentList - 1 + lists.length) % lists.length;
-        currentRow = 0;
-        lists[currentList][currentRow].scrollIntoView({ behavior: 'smooth' });
-        updateCursor();
-      } else if (e.key === 'ArrowRight') {
-        currentList = (currentList + 1) % lists.length;
-        currentRow = 0;
-        lists[currentList][currentRow].scrollIntoView({ behavior: 'smooth' });
-        updateCursor();
-      }
     });
 
-    updateCursor();
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', function() {
+        this.style.transform = 'scale(0.95)';
+        setTimeout(() => this.style.transform = '', 150);
+      });
+    });
+
+    document.querySelector('.scroll-arrow').addEventListener('click', () => {
+      window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
