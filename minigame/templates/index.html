@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palace of Phoenix Feathers</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="scene-bg"></div>
+        <div id="characters"></div>
+        <div id="ui-layer">
+            <div id="name-box"></div>
+            <div id="text-box">
+                <p id="dialogue"></p>
+                <div id="continue-hint">▼ click to continue</div>
+            </div>
+            <div id="choices"></div>
+        </div>
+        <div id="title-screen" class="overlay">
+            <h1>Palace of Phoenix Feathers</h1>
+            <p class="subtitle">A mini galgame set in the imperial court</p>
+            <button id="start-btn">Begin Story</button>
+        </div>
+        <div id="ending-screen" class="overlay hidden">
+            <h1 id="ending-title">The End</h1>
+            <p id="ending-text"></p>
+            <button id="restart-btn">Play Again</button>
+        </div>
+    </div>
+    <script src="/static/data/story.js"></script>
+    <script src="/static/js/game.js"></script>
+</body>
+</html>

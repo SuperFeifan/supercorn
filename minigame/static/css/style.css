@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --ink: #2c1e1e;
+    --paper: #fdf6e3;
+    --gold: #d4a843;
+    --red: #9e2a2b;
+    --jade: #3a7d44;
+    --shadow: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    font-family: 'Noto Serif SC', 'Cinzel', serif;
+    background: #111;
+    color: var(--paper);
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-container {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    height: 100vh;
+    max-height: 720px;
+    background: #1a1414;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+#scene-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+#scene-bg.creepy {
+    filter: grayscale(0.7) contrast(1.2) brightness(0.6) hue-rotate(260deg);
+}
+
+#characters {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.character {
+    position: absolute;
+    bottom: 0;
+    width: 45%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.character.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.character.left {
+    left: 5%;
+}
+
+.character.right {
+    right: 5%;
+}
+
+.character.center {
+    left: 27.5%;
+}
+
+.silhouette {
+    width: 180px;
+    height: 360px;
+    border-radius: 90px 90px 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    box-shadow: 0 10px 30px var(--shadow);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.silhouette.jingheng { background: linear-gradient(180deg, #4a6fa5 0%, #2a4a6f 100%); }
+.silhouette.murong { background: linear-gradient(180deg, #8b5a2b 0%, #5c3a1e 100%); }
+.silhouette.shen { background: linear-gradient(180deg, #5a8f7b 0%, #3a5f52 100%); }
+.silhouette.jingyuan { background: linear-gradient(180deg, #c17817 0%, #8a500f 100%); }
+.silhouette.guyue { background: linear-gradient(180deg, #6a4c93 0%, #3e2a5a 100%); }
+.silhouette.yunxi { background: linear-gradient(180deg, #c44569 0%, #8b2f47 100%); }
+.silhouette.ghost { background: linear-gradient(180deg, #7f8c8d 0%, #2c3e50 100%); filter: blur(2px); }
+
+#ui-layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#name-box {
+    position: absolute;
+    bottom: 190px;
+    left: 50px;
+    background: rgba(158, 42, 43, 0.9);
+    padding: 8px 24px;
+    border-radius: 4px 4px 0 0;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--paper);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    border: 2px solid var(--gold);
+    border-bottom: none;
+}
+
+#name-box.visible {
+    opacity: 1;
+}
+
+#text-box {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    min-height: 160px;
+    background: rgba(20, 10, 10, 0.92);
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    padding: 24px 30px;
+    cursor: pointer;
+    pointer-events: auto;
+    box-shadow: 0 -5px 30px var(--shadow);
+}
+
+#dialogue {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--paper);
+    min-height: 80px;
+}
+
+#continue-hint {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--gold);
+    margin-top: 12px;
+    opacity: 0.7;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+}
+
+#choices {
+    position: absolute;
+    bottom: 210px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: auto;
+}
+
+.choice-btn {
+    background: rgba(20, 10, 10, 0.95);
+    border: 2px solid var(--gold);
+    color: var(--paper);
+    padding: 14px 20px;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.choice-btn:hover {
+    background: rgba(158, 42, 43, 0.9);
+    transform: translateX(8px);
+    border-color: var(--paper);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 6, 6, 0.94);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    pointer-events: auto;
+    transition: opacity 0.5s;
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#title-screen h1 {
+    font-size: 3rem;
+    color: var(--gold);
+    margin-bottom: 16px;
+    text-shadow: 0 0 20px rgba(212, 168, 67, 0.4);
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #c4b8a0;
+    text-align: center;
+}
+
+button {
+    background: var(--red);
+    color: var(--paper);
+    border: 2px solid var(--gold);
+    padding: 14px 36px;
+    font-family: inherit;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: var(--gold);
+    color: var(--ink);
+}
+
+#ending-screen h1 {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#ending-screen p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 80%;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--paper);
+}
+
+@media (max-width: 600px) {
+    #title-screen h1 { font-size: 2rem; }
+    #dialogue { font-size: 1rem; }
+    .silhouette { width: 120px; height: 240px; }
+}
