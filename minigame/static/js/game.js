@@ -81,7 +81,7 @@ const Game = {
             const el = document.createElement('div');
             el.className = `character ${positions[index] || 'center'} visible`;
             el.innerHTML = `
-                <div class="silhouette ${charData.class}">${charData.emoji}</div>
+                <img class="silhouette ${charData.class}" src="static/img/${key}.svg" alt="${charData.name}">
             `;
             container.appendChild(el);
         });

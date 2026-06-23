@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 360" width="200" height="360">
+  <defs>
+    <linearGradient id="ghostBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a0b0b8"/><stop offset="1" stop-color="#3a4a50"/></linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="3"/></filter>
+  </defs>
+  <g opacity="0.85">
+    <path d="M100 10 Q60 10 55 50 Q50 90 52 130 L48 200 Q46 220 50 230 Q55 240 60 235 L68 225 L76 240 Q80 245 84 240 L92 225 L100 245 Q100 248 100 248 L100 248 Q100 248 100 245 L108 225 L116 240 Q120 245 124 240 L132 225 L140 235 Q145 240 150 230 Q154 220 152 200 L148 130 Q150 90 145 50 Q140 10 100 10Z" fill="url(#ghostBody)" filter="url(#glow)"/>
+    <!-- Dark hollow eyes -->
+    <ellipse cx="80" cy="80" rx="14" ry="18" fill="#0a1018" opacity="0.8"/>
+    <ellipse cx="120" cy="80" rx="14" ry="18" fill="#0a1018" opacity="0.8"/>
+    <ellipse cx="80" cy="80" rx="8" ry="12" fill="#1a2a30"/>
+    <ellipse cx="120" cy="80" rx="8" ry="12" fill="#1a2a30"/>
+    <!-- Glowing pupils -->
+    <ellipse cx="78" cy="78" rx="3" ry="4" fill="#e0f0ff" opacity="0.5"/>
+    <ellipse cx="118" cy="78" rx="3" ry="4" fill="#e0f0ff" opacity="0.5"/>
+    <!-- Mouth -->
+    <ellipse cx="100" cy="110" rx="5" ry="3" fill="#1a2a30"/>
+    <!-- Hood shape -->
+    <path d="M60 30 Q60 10 100 8 Q140 10 140 30 Q145 50 148 70 Q146 55 140 42 Q130 28 100 26 Q70 28 60 42 Q54 55 52 70 Q55 50 60 30Z" fill="#1a2a30" opacity="0.9"/>
+    <path d="M65 28 Q65 14 100 12 Q135 14 135 28 Q140 44 144 58 Q138 42 128 32 Q114 22 100 20 Q86 22 72 32 Q62 42 56 58 Q60 44 65 28Z" fill="#0a1018"/>
+  </g>
+</svg>

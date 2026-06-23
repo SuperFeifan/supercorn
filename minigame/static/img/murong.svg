@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 360" width="200" height="360">
+  <defs>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5d0b8"/><stop offset="1" stop-color="#e8b898"/></linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a4a2a"/><stop offset="1" stop-color="#3a2a1a"/></linearGradient>
+    <linearGradient id="dress" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a06a35"/><stop offset="0.6" stop-color="#5c3a1e"/><stop offset="1" stop-color="#3a2412"/></linearGradient>
+  </defs>
+  <ellipse cx="100" cy="58" rx="48" ry="52" fill="url(#hair)"/>
+  <path d="M52 58 Q48 28 62 18 Q78 6 100 5 Q122 6 138 18 Q152 28 148 58 Q146 90 134 100 Q116 112 100 100 Q84 112 66 100 Q54 90 52 58Z" fill="url(#hair)"/>
+  <ellipse cx="100" cy="82" rx="34" ry="38" fill="url(#skin)"/>
+  <ellipse cx="84" cy="81" rx="8" ry="10" fill="white"/>
+  <ellipse cx="84" cy="83" rx="5" ry="6" fill="#4a3020"/>
+  <ellipse cx="84" cy="82" rx="2.5" ry="3" fill="#1a1008"/>
+  <ellipse cx="116" cy="81" rx="8" ry="10" fill="white"/>
+  <ellipse cx="116" cy="83" rx="5" ry="6" fill="#4a3020"/>
+  <ellipse cx="116" cy="82" rx="2.5" ry="3" fill="#1a1008"/>
+  <path d="M74 68 Q82 63 92 66" stroke="#5a3a2a" stroke-width="2" fill="none"/>
+  <path d="M108 66 Q118 63 126 68" stroke="#5a3a2a" stroke-width="2" fill="none"/>
+  <path d="M90 100 Q100 108 110 100" stroke="#8a6050" stroke-width="1.5" fill="none"/>
+  <path d="M66 34 Q70 22 80 16 L88 42 Q78 36 66 34Z" fill="url(#hair)"/>
+  <path d="M88 42 L96 10 Q100 8 104 10 L112 42 Q100 48 88 42Z" fill="url(#hair)"/>
+  <path d="M112 42 L120 16 Q130 22 134 34 L112 42Z" fill="url(#hair)"/>
+  <path d="M54 36 Q44 72 48 94 Q50 106 54 98 Q52 82 58 54Z" fill="url(#hair)" opacity="0.8"/>
+  <path d="M146 36 Q156 72 152 94 Q150 106 146 98 Q148 82 142 54Z" fill="url(#hair)" opacity="0.8"/>
+  <!-- Headband -->
+  <rect x="64" y="28" width="72" height="8" rx="3" fill="#8b0000"/>
+  <rect x="91" y="115" width="18" height="18" rx="5" fill="url(#skin)"/>
+  <path d="M66 128 L91 115 L100 128 L109 115 L134 128 L130 150 L100 160 L70 150Z" fill="#1a1a1a"/>
+  <path d="M80 126 L95 118 L100 126 L105 118 L120 126 L115 142 L100 150 L85 142Z" fill="#8b0000"/>
+  <path d="M50 150 L66 128 L134 128 L150 150 L154 260 L150 340 Q100 360 50 340 L46 260Z" fill="url(#dress)"/>
+  <rect x="52" y="202" width="96" height="30" rx="4" fill="#4a2a12"/>
+  <path d="M100 218 Q84 224 74 216 Q88 236 100 234 Q112 236 126 216 Q116 224 100 218Z" fill="#8b0000"/>
+  <!-- Sword -->
+  <path d="M150 148 L168 50 L170 52 L152 150Z" fill="#c0c0c0" stroke="#808080" stroke-width="0.5"/>
+  <rect x="148" y="148" width="6" height="14" rx="2" fill="#8b4513"/>
+  <path d="M148 158 Q151 162 154 158" fill="#d4a843"/>
+  <path d="M50 148 Q34 178 32 208 Q30 238 36 258 L50 248 Q44 218 50 174Z" fill="#4a2a12"/>
+  <path d="M52 148 Q36 178 34 208 L48 248 Q46 218 52 174Z" fill="#5c3a1e"/>
+  <path d="M150 148 Q166 178 168 208 Q170 238 164 258 L150 248 Q156 218 150 174Z" fill="#4a2a12"/>
+  <path d="M148 148 Q164 178 166 208 L152 248 Q154 218 148 174Z" fill="#5c3a1e"/>
+</svg>
