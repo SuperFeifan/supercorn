@@ -11,6 +11,8 @@ const Game = {
     bindEvents() {
         document.getElementById('start-btn').addEventListener('click', () => {
             document.getElementById('title-screen').classList.add('hidden');
+            Music.init();
+            Music.start();
             this.renderNode();
         });
 
@@ -57,6 +59,7 @@ const Game = {
         const bgValue = STORY.backgrounds[bgName] || STORY.backgrounds.palace;
         bgEl.style.background = bgValue;
         bgEl.classList.toggle('creepy', bgName === 'mirror');
+        Music.setMode(bgName === 'mirror' ? 'creepy' : 'normal');
     },
 
     setCharacters(charKeys) {
