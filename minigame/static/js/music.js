@@ -142,7 +142,7 @@ const Music = {
         const attack = 0.005;
         const decay = isCreepy ? 1.4 : 0.9;
         gain.gain.setValueAtTime(0, time);
-        gain.gain.linearRampToValueAtTime(isCreepy ? 0.12 : 0.09, time + attack);
+        gain.gain.linearRampToValueAtTime(isCreepy ? 0.16 : 0.13, time + attack);
         gain.gain.exponentialRampToValueAtTime(0.001, time + decay);
 
         osc.start(time);
@@ -157,7 +157,7 @@ const Music = {
         sineGain.connect(this.ctx.destination);
 
         sineGain.gain.setValueAtTime(0, time);
-        sineGain.gain.linearRampToValueAtTime(isCreepy ? 0.03 : 0.025, time + attack);
+        sineGain.gain.linearRampToValueAtTime(isCreepy ? 0.05 : 0.04, time + attack);
         sineGain.gain.exponentialRampToValueAtTime(0.001, time + decay * 0.8);
 
         sineOsc.start(time);
